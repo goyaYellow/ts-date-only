@@ -8,6 +8,8 @@ export class DateOnly {
   public readonly day: Day;
 
   public constructor(year: Year, month: Month, day: Day) {
+    // TODO ありえな年月日だったときにどうする？
+
     this.year = year;
     this.month = month;
     this.day = day;
@@ -24,6 +26,11 @@ export class DateOnly {
     const month = Number(splitted[1]);
     const day = Number(splitted[2]);
     return new DateOnly(new Year(year), new Month(month), new Day(day));
+  }
+
+  public static createByNum(year: number, month: number, day: number) {
+    const date = new Date(year, month, day);
+    return this.createByDate(date);
   }
 
   public static createByDate(source: Date): DateOnly {
@@ -65,6 +72,24 @@ export class DateOnly {
       return new DateOnly(this.year.add(new Year(year)), this.month, this.day);
     } else {
       return new DateOnly(this.year.add(year), this.month, this.day);
+    }
+  }
+
+  public addMonth(month: number): DateOnly;
+  public addMonth(month: Month): DateOnly;
+  public addMonth(month: number | Month): DateOnly {
+    if (typeof month === "number") {
+      return DateOnly.createByNum(
+        this.year.value,
+        this.month.value + month,
+        this.day.value
+      );
+    } else {
+      return DateOnly.createByNum(
+        this.year.value,
+        this.month.value + month.value,
+        this.day.value
+      );
     }
   }
 }

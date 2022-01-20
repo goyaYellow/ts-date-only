@@ -1,4 +1,4 @@
-export class Day {
+export class Month {
   private readonly value: number;
 
   public constructor(value: number) {

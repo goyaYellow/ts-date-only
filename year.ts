@@ -1,5 +1,5 @@
 export class Year {
-  private readonly value: number;
+  public readonly value: number;
 
   public constructor(value: number) {
     if (value <= 0)
@@ -8,5 +8,9 @@ export class Year {
       throw new Error(`valueは1以上の自然数でないといけません。value=${value}`);
 
     this.value = value;
+  }
+
+  public add(other: Year): Year {
+    return new Year(this.value + other.value);
   }
 }

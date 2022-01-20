@@ -33,4 +33,38 @@ export class DateOnly {
       new Day(source.getDate())
     );
   }
+
+  public asDateWithFirstTime(): Date {
+    return new Date(
+      this.year.value,
+      this.month.value,
+      this.day.value,
+      0,
+      0,
+      0,
+      0
+    );
+  }
+
+  public asDateWithLastTime(): Date {
+    return new Date(
+      this.year.value,
+      this.month.value,
+      this.day.value,
+      23,
+      59,
+      59,
+      99999999
+    );
+  }
+
+  public addYear(year: number): DateOnly;
+  public addYear(year: Year): DateOnly;
+  public addYear(year: number | Year): DateOnly {
+    if (typeof year === "number") {
+      return new DateOnly(this.year.add(new Year(year)), this.month, this.day);
+    } else {
+      return new DateOnly(this.year.add(year), this.month, this.day);
+    }
+  }
 }

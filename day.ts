@@ -1,5 +1,5 @@
 export class Day {
-  private readonly value: number;
+  public readonly value: number;
 
   public constructor(value: number) {
     if (value <= 0)

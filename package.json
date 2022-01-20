@@ -1,0 +1,25 @@
+{
+  "name": "ts-date-only",
+  "version": "1.0.0",
+  "description": "date only objects for ts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goyaYellow/ts-date-only.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/goyaYellow/ts-date-only/issues"
+  },
+  "homepage": "https://github.com/goyaYellow/ts-date-only#readme",
+  "devDependencies": {
+    "eslint": "^8.7.0",
+    "eslint-config-prettier": "^8.3.0",
+    "jest": "^27.4.7",
+    "prettier": "^2.5.1"
+  }
+}

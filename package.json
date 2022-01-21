@@ -1,10 +1,13 @@
 {
   "name": "@goya_yellow/date-only",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "date only objects for ts",
   "main": "index.js",
   "private": false,
+  "types": "index.d.ts",
   "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

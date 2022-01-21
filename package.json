@@ -1,8 +1,9 @@
 {
-  "name": "ts-date-only",
+  "name": "@goya_yellow/date-only",
   "version": "1.0.0",
   "description": "date only objects for ts",
   "main": "index.js",
+  "private": false,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,7 +12,7 @@
     "url": "git+https://github.com/goyaYellow/ts-date-only.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/goyaYellow/ts-date-only/issues"
   },

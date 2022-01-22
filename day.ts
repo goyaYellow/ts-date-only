@@ -9,4 +9,14 @@ export class Day {
 
     this.value = value;
   }
+
+  public add(other: number): Day;
+  public add(other: Day): Day;
+  public add(other: number | Day): Day {
+    if (typeof other === "number") {
+      return new Day(this.value + other);
+    } else {
+      return new Day(this.value + other.value);
+    }
+  }
 }

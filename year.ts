@@ -10,7 +10,13 @@ export class Year {
     this.value = value;
   }
 
-  public add(other: Year): Year {
-    return new Year(this.value + other.value);
+  public add(other: number): Year;
+  public add(other: Year): Year;
+  public add(other: number | Year): Year {
+    if (typeof other === "number") {
+      return new Year(this.value + other);
+    } else {
+      return new Year(this.value + other.value);
+    }
   }
 }

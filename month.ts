@@ -9,4 +9,14 @@ export class Month {
 
     this.value = value;
   }
+
+  public add(other: number): Month;
+  public add(other: Month): Month;
+  public add(other: number | Month): Month {
+    if (typeof other === "number") {
+      return new Month(this.value + other);
+    } else {
+      return new Month(this.value + other.value);
+    }
+  }
 }

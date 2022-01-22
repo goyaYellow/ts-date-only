@@ -22,7 +22,7 @@ export class DateOnly {
 
     if (splitted.length !== 3)
       throw new Error(`元ネタの形式が不正です！ source=${source}`);
-      
+
     const year = Number(splitted[0]);
     const month = Number(splitted[1]);
     const day = Number(splitted[2]);

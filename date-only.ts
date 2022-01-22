@@ -1,4 +1,5 @@
 import { Day } from "./day";
+import * as dayOfTheWeek from "./day-of-the-week";
 import { Month } from "./month";
 import { Year } from "./year";
 
@@ -92,5 +93,27 @@ export class DateOnly {
         this.day.value
       );
     }
+  }
+
+  public addDay(day: number): DateOnly;
+  public addDay(day: Day): DateOnly;
+  public addDay(day: number | Day): DateOnly {
+    if (typeof day === "number") {
+      return DateOnly.createByNum(
+        this.year.value,
+        this.month.value,
+        this.day.value + day
+      );
+    } else {
+      return DateOnly.createByNum(
+        this.year.value,
+        this.month.value,
+        this.day.value + day.value
+      );
+    }
+  }
+
+  public getDayOfTheWeek(): dayOfTheWeek.DayOfTheWeek {
+    return dayOfTheWeek.convertFromDate(this.asDateWithFirstTime());
   }
 }

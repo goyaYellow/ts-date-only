@@ -1,20 +1,40 @@
-import { Day } from "./day";
 import * as dayOfTheWeek from "./day-of-the-week";
-import { Month } from "./month";
-import { Year } from "./year";
 
 export class DateOnly {
-  public readonly year: Year;
-  public readonly month: Month;
-  public readonly day: Day;
+  public readonly year: number;
+  public readonly month: number;
+  public readonly day: number;
 
-  public constructor(year: Year, month: Month, day: Day) {
-    // TODO ありえな年月日だったときにどうする？
+  public constructor(year: number, month: number, day: number) {
+    if (year <= 0)
+      throw new Error(`yearは1以上の自然数でないといけません。year=${year}`);
+    if (year % 1 > 0)
+      throw new Error(`yearは1以上の自然数でないといけません。year=${year}`);
+    if (month <= 0)
+      throw new Error(`monthは1以上の自然数でないといけません。month=${month}`);
+    if (month % 1 > 0)
+      throw new Error(`monthは1以上の自然数でないといけません。month=${month}`);
+    if (day <= 0)
+      throw new Error(`dayは1以上の自然数でないといけません。day=${day}`);
+    if (day % 1 > 0)
+      throw new Error(`dayは1以上の自然数でないといけません。day=${day}`);
+
+    const criterion = new Date(year, month, day);
+    if (
+      year !== criterion.getFullYear() ||
+      month !== criterion.getMonth() + 1 ||
+      day !== criterion.getDate()
+    )
+      throw new Error(
+        `不正な年月日です。year=${year}。month=${month}。day=${day}`
+      );
 
     this.year = year;
     this.month = month;
     this.day = day;
   }
+
+  // #region ファクトリ系
 
   public static createByStr(source: string, separator?: string): DateOnly {
     if (separator === undefined) separator = "/";
@@ -27,39 +47,30 @@ export class DateOnly {
     const year = Number(splitted[0]);
     const month = Number(splitted[1]);
     const day = Number(splitted[2]);
-    return new DateOnly(new Year(year), new Month(month), new Day(day));
-  }
-
-  public static createByNum(year: number, month: number, day: number) {
-    const date = new Date(year, month, day);
-    return this.createByDate(date);
+    return new DateOnly(year, month, day);
   }
 
   public static createByDate(source: Date): DateOnly {
     return new DateOnly(
-      new Year(source.getFullYear()),
-      new Month(source.getMonth()),
-      new Day(source.getDate())
+      source.getFullYear(),
+      source.getMonth() + 1,
+      source.getDate()
     );
   }
 
+  // #endregion
+
+  // #region 値取得系
+
   public asDateWithFirstTime(): Date {
-    return new Date(
-      this.year.value,
-      this.month.value,
-      this.day.value,
-      0,
-      0,
-      0,
-      0
-    );
+    return new Date(this.year, this.month, this.day, 0, 0, 0, 0);
   }
 
   public asDateWithLastTime(): Date {
     return new Date(
-      this.year.value,
-      this.month.value,
-      this.day.value,
+      this.year,
+      this.month,
+      this.day,
       23,
       59,
       59,
@@ -67,53 +78,36 @@ export class DateOnly {
     );
   }
 
-  public addYear(year: number): DateOnly;
-  public addYear(year: Year): DateOnly;
-  public addYear(year: number | Year): DateOnly {
-    if (typeof year === "number") {
-      return new DateOnly(this.year.add(new Year(year)), this.month, this.day);
-    } else {
-      return new DateOnly(this.year.add(year), this.month, this.day);
-    }
-  }
-
-  public addMonth(month: number): DateOnly;
-  public addMonth(month: Month): DateOnly;
-  public addMonth(month: number | Month): DateOnly {
-    if (typeof month === "number") {
-      return DateOnly.createByNum(
-        this.year.value,
-        this.month.value + month,
-        this.day.value
-      );
-    } else {
-      return DateOnly.createByNum(
-        this.year.value,
-        this.month.value + month.value,
-        this.day.value
-      );
-    }
-  }
-
-  public addDay(day: number): DateOnly;
-  public addDay(day: Day): DateOnly;
-  public addDay(day: number | Day): DateOnly {
-    if (typeof day === "number") {
-      return DateOnly.createByNum(
-        this.year.value,
-        this.month.value,
-        this.day.value + day
-      );
-    } else {
-      return DateOnly.createByNum(
-        this.year.value,
-        this.month.value,
-        this.day.value + day.value
-      );
-    }
-  }
-
-  public getDayOfTheWeek(): dayOfTheWeek.DayOfTheWeek {
+  public getDayOfWeek(): dayOfTheWeek.DayOfTheWeek {
     return dayOfTheWeek.convertFromDate(this.asDateWithFirstTime());
   }
+
+  // #endregion
+
+  // #region 加算系
+  public addYear(year: number): DateOnly {
+    return new DateOnly(this.year + year, this.month, this.day);
+  }
+
+  public addMonth(month: number): DateOnly {
+    return new DateOnly(this.year, this.month + month, this.day);
+  }
+
+  public addDay(day: number): DateOnly {
+    return new DateOnly(this.year, this.month, this.day + day);
+  }
+
+  //#endregion
+
+  // #region 比較系
+
+  public equals(other: DateOnly): boolean {
+    return (
+      this.year === other.year &&
+      this.month === other.month &&
+      this.day === other.day
+    );
+  }
+
+  // #endregion
 }

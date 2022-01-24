@@ -2,5 +2,8 @@
   // 保存時自動フォーマット
   "editor.formatOnSave": true,
   // デフォルトフォーマッタをprettierに
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "cSpell.words": [
+    "endregion"
+  ]
 }

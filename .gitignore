@@ -105,3 +105,4 @@ dist
 
 # 以下俺の設定
 *.js
+./sample_runner.ts

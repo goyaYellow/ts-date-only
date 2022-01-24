@@ -109,5 +109,39 @@ export class DateOnly {
     );
   }
 
+  public isLessThan(other: DateOnly): boolean {
+    if (this.year > other.year) {
+      return false;
+    } else if (this.year < other.year) {
+      return true;
+    }
+
+    if (this.month > other.month) {
+      return false;
+    } else if (this.month < other.month) {
+      return true;
+    }
+
+    if (this.day > other.day) {
+      return false;
+    } else if (this.day < other.day) {
+      return true;
+    }
+
+    return false;
+  }
+
+  public isMoreThan(other: DateOnly): boolean {
+    return !this.isLessThan(other);
+  }
+
+  public isLessThanOrEqual(other: DateOnly): boolean {
+    return this.isLessThan(other) || this.equals(other);
+  }
+
+  public isMoreThanOrEqual(other: DateOnly): boolean {
+    return this.isMoreThan(other) || this.equals(other);
+  }
+
   // #endregion
 }

@@ -5,5 +5,7 @@ test(`インスタンス化できる!`, () => {
 });
 
 test(`インスタンス化できる？`, () => {
-  expect(new DateOnly(-1, -2, -3)).toBe("hoge");
+  expect(() => {
+    new DateOnly(-1, -2, -3);
+  }).toThrowError(Error);
 });

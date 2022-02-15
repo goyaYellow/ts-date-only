@@ -8,25 +8,25 @@ export class DateOnly {
   public constructor(year: number, month: number, day: number) {
     if (year <= 0)
       throw new Error(`yearは1以上の自然数でないといけません。year=${year}`);
-    if (year % 1 > 0)
+    if (year % 1 !== 0)
       throw new Error(`yearは1以上の自然数でないといけません。year=${year}`);
     if (month <= 0)
       throw new Error(`monthは1以上の自然数でないといけません。month=${month}`);
-    if (month % 1 > 0)
+    if (month % 1 !== 0)
       throw new Error(`monthは1以上の自然数でないといけません。month=${month}`);
     if (day <= 0)
       throw new Error(`dayは1以上の自然数でないといけません。day=${day}`);
-    if (day % 1 > 0)
+    if (day % 1 !== 0)
       throw new Error(`dayは1以上の自然数でないといけません。day=${day}`);
 
-    const criterion = new Date(year, month, day);
+    const criterion = new Date(`${year}-${month}-${day}`);
     if (
       year !== criterion.getFullYear() ||
       month !== criterion.getMonth() + 1 ||
       day !== criterion.getDate()
     )
       throw new Error(
-        `不正な年月日です。year=${year}。month=${month}。day=${day}`
+        `不正な年月日です。year=${year}。month=${month}。day=${day}。Date=${criterion}`
       );
 
     this.year = year;

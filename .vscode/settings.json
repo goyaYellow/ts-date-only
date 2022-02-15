@@ -4,6 +4,11 @@
   // デフォルトフォーマッタをprettierに
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "cSpell.words": [
-    "endregion"
-  ]
+    "endregion",
+    "hoge"
+  ],
+  // vscode-jest に jest を実行するコマンドを教えてやる
+  // NOTE: `vscode-jest` はこのコマンドに `--watch` などのオプションを渡して実行するので、
+  // `--` を明示してオプションが続けて渡せるようにしておく必要がある。[参考](https://www.mizdra.net/entry/2021/12/13/011842)
+  "jest.jestCommandLine": "npm run test --",
 }

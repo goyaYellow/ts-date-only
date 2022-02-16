@@ -36,7 +36,7 @@ export class DateOnly {
 
   // #region ファクトリ系
 
-  public static createByStr(source: string, separator?: string): DateOnly {
+  public static fromByStr(source: string, separator?: string): DateOnly {
     if (separator === undefined) separator = "/";
 
     const splitted = source.split(separator);
@@ -50,7 +50,7 @@ export class DateOnly {
     return new DateOnly(year, month, day);
   }
 
-  public static createByDate(source: Date): DateOnly {
+  public static fromByDate(source: Date): DateOnly {
     return new DateOnly(
       source.getFullYear(),
       source.getMonth() + 1,

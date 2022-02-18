@@ -31,3 +31,5 @@ jobs:
         run: npm test
       - name: exe publish
         run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}

@@ -21,12 +21,6 @@ jobs:
       # Checkout the repository to the GitHub Actions runner
       - name: checkout
         uses: actions/checkout@v2
-      - name: configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          role-to-assume: ${{ secrets.ASSUME_ROLE_ARN_DEV }}
-          aws-region: ${{ env.AWS_REGION }}
-      - run: aws sts get-caller-identity
       - name: node install
         uses: actions/setup-node@v1
         with:

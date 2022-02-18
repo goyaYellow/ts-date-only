@@ -1,0 +1,39 @@
+name: "NPM-RELEASE"
+
+on:
+  push:
+    branches:
+      - npm-release
+
+jobs:
+  publish:
+    name: "npm-release"
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
+    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      # Checkout the repository to the GitHub Actions runner
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: ${{ secrets.ASSUME_ROLE_ARN_DEV }}
+          aws-region: ${{ env.AWS_REGION }}
+      - run: aws sts get-caller-identity
+      - name: node install
+        uses: actions/setup-node@v1
+        with:
+          node-version: "16"
+      - name: setup dependencies
+        run: npm ci
+      - name: run test
+        run: npm test
+      - name: exe publish
+        run: npm publish

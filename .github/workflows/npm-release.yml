@@ -29,7 +29,9 @@ jobs:
         run: npm ci
       - name: run test
         run: npm test
+      - name: build
+        run: npm run build
       - name: exe publish
-        run: npm publish
+        run: npm publish --access=public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}

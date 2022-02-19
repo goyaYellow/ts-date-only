@@ -24,9 +24,7 @@ jobs:
           node-version: "16"
           registry-url: "https://registry.npmjs.org"
       - name: setup dependencies
-        run: |
-          npm install can-npm-publish
-          npm ci
+        run: npm ci
       - name: run test
         run: npm test
       - name: build

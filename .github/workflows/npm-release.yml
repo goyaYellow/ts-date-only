@@ -9,9 +9,6 @@ jobs:
   publish:
     name: "npm-release"
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
@@ -25,8 +22,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "16"
+          registry-url: "https://registry.npmjs.org"
       - name: setup dependencies
-        run: npm ci
+        run: |
+          npm install can-npm-publish
+          npm ci
       - name: run test
         run: npm test
       - name: build

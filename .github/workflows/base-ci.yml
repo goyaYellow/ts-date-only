@@ -15,7 +15,6 @@ env:
   SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
   SLACK_USERNAME: DeployBot
   SLACK_CHANNEL: develop
-  SLACK_ICON: https://example.com/image/icon_bot.png
 
 #-------------------------#
 # 実際の処理

@@ -7,7 +7,7 @@ on:
 
 env:
   SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
-  SLACK_USERNAME: CI/CD_Bot
+  SLACK_USERNAME: リリースを通知君
 
 jobs:
   publish:

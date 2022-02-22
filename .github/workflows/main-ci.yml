@@ -13,7 +13,8 @@ on:
 #-------------------------#
 env:
   SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
-  SLACK_USERNAME: CI_Bot
+  SLACK_USERNAME: CIを通知君
+  SLACK_ICON: https://example.com/image/icon_bot.png
 
 #-------------------------#
 # 実際の処理
@@ -43,8 +44,15 @@ jobs:
       - name: build
         run: npm run build
       #-- Slack通知 -- [参照](https://blog.katsubemakito.net/git/github-actions-slack) #
+      # 成功
+      - name: notice for slack on SUCCESS
+        if: ${{ success() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_TITLE: 小さい成功体験の積み重ねが大事やんな💋
+          SLACK_COLOR: good
       # 失敗
-      - name: notice for slack on Failure
+      - name: notice for slack on FAILURE
         if: ${{ failure() }}
         uses: rtCamp/action-slack-notify@v2
         env:

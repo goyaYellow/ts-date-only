@@ -1,10 +1,25 @@
 name: "BASE-CI"
 
+#-------------------------#
+# トリガー
+#-------------------------#
 on:
   push:
     branches:
       - main
 
+#-------------------------#
+# 環境変数
+#-------------------------#
+env:
+  SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+  SLACK_USERNAME: DeployBot
+  SLACK_CHANNEL: develop
+  SLACK_ICON: https://example.com/image/icon_bot.png
+
+#-------------------------#
+# 実際の処理
+#-------------------------#
 jobs:
   publish:
     name: "base-ci"

@@ -59,7 +59,7 @@ describe("ファクトリ系", () => {
       const actual = DateOnly.fromByStr(source);
 
       // 検証
-      expect(actual.equals(expected)).toBe(true);
+      expect(actual.equals(expected)).toBe(false);
     });
   });
 });

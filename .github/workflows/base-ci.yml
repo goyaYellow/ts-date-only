@@ -1,0 +1,45 @@
+name: "BASE-CI"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    name: "base-ci"
+    runs-on: ubuntu-latest
+
+    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      # Checkout the repository to the GitHub Actions runner
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: node install
+        uses: actions/setup-node@v1
+        with:
+          node-version: "16"
+          registry-url: "https://registry.npmjs.org"
+      - name: setup dependencies
+        run: npm ci
+      - name: run test
+        run: npm test
+      #-- Slack通知 -- [参照](https://blog.katsubemakito.net/git/github-actions-slack) #
+      # 成功
+      - name: Slack Notification on Success
+        if: ${{ success() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_TITLE: Deploy Success
+          SLACK_COLOR: good
+
+      # 失敗
+      - name: Slack Notification on Failure
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_TITLE: Deploy Failure
+          SLACK_COLOR: danger

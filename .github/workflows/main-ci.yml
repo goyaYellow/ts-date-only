@@ -20,7 +20,7 @@ env:
 #-------------------------#
 jobs:
   publish:
-    name: "base-ci"
+    name: "main-ci"
     runs-on: ubuntu-latest
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
@@ -42,9 +42,9 @@ jobs:
         run: npm test
       #-- Slack通知 -- [参照](https://blog.katsubemakito.net/git/github-actions-slack) #
       # 失敗
-      - name: Slack Notification on Failure
+      - name: notice for slack on Failure
         if: ${{ failure() }}
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_TITLE: Deploy Failure
+          SLACK_TITLE: CIしくってるぞ💢 早く直せ👶💢
           SLACK_COLOR: danger

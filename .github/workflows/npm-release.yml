@@ -39,14 +39,14 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
       #-- Slack通知 -- [参照](https://blog.katsubemakito.net/git/github-actions-slack) #
       # 成功
-      - name: Slack Notification on Success
+      - name: notice for slack on Success
         if: ${{ success() }}
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_TITLE: Deploy Success
           SLACK_COLOR: good
       # 失敗
-      - name: Slack Notification on Failure
+      - name: notice for slack on Failure
         if: ${{ failure() }}
         uses: rtCamp/action-slack-notify@v2
         env:

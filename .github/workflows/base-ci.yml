@@ -13,7 +13,7 @@ on:
 #-------------------------#
 env:
   SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
-  SLACK_USERNAME: DeployBot
+  SLACK_USERNAME: CI_Bot
 
 #-------------------------#
 # 実際の処理
@@ -41,14 +41,6 @@ jobs:
       - name: run test
         run: npm test
       #-- Slack通知 -- [参照](https://blog.katsubemakito.net/git/github-actions-slack) #
-      # 成功
-      - name: Slack Notification on Success
-        if: ${{ success() }}
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_TITLE: Deploy Success
-          SLACK_COLOR: good
-
       # 失敗
       - name: Slack Notification on Failure
         if: ${{ failure() }}

@@ -8,6 +8,7 @@ on:
 env:
   SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
   SLACK_USERNAME: リリースを通知君
+  SLACK_ICON: https://example.com/image/icon_bot.png
 
 jobs:
   publish:

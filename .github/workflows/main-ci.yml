@@ -14,7 +14,7 @@ on:
 env:
   SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
   SLACK_USERNAME: CIを通知君
-  SLACK_ICON: https://example.com/image/icon_bot.png
+  SLACK_ICON: https://fmkafdkadifdafa
 
 #-------------------------#
 # 実際の処理

@@ -8,7 +8,7 @@ on:
 env:
   SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
   SLACK_USERNAME: リリースを通知君
-  SLACK_ICON: https://example.com/image/icon_bot.png
+  SLACK_ICON: https://example.com/image/icon_bot.png # 404でも画像なしになるだけで怒られない 20220222
 
 jobs:
   publish:

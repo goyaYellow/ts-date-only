@@ -19,7 +19,6 @@ export class DateOnly {
     if (day % 1 !== 0)
       throw new Error(`dayは1以上の自然数でないといけません。day=${day}`);
 
-    
     const criterion = new Date(`${year}-${month}-${day}`);
     if (
       year !== criterion.getFullYear() ||

@@ -31,6 +31,50 @@ describe("コンストラクタ", () => {
       }
     );
 
+    describe.each([[-1], [2022.1]])(
+      "存在し得ない年が渡された場合にエラーをスローする",
+      (year) => {
+        test(`存在し得ない年が渡された場合にエラーをスローする。${year}/1/1`, () => {
+          expect(() => {
+            new DateOnly(year, 1, 1);
+          }).toThrowError(Error);
+        });
+      }
+    );
+
+    describe.each([[-1], [1.1]])(
+      "存在し得ない月が渡された場合にエラーをスローする",
+      (month) => {
+        test(`存在し得ない月が渡された場合にエラーをスローする。2022/${month}/1`, () => {
+          expect(() => {
+            new DateOnly(2022, month, 1);
+          }).toThrowError(Error);
+        });
+      }
+    );
+
+    describe.each([[-1], [1.1]])(
+      "存在し得ない日が渡された場合にエラーをスローする",
+      (day) => {
+        test(`存在し得ない日が渡された場合にエラーをスローする。2022/1/${day}`, () => {
+          expect(() => {
+            new DateOnly(2022, 1, day);
+          }).toThrowError(Error);
+        });
+      }
+    );
+
+    describe.each([[-1], [1.1]])(
+      "存在し得ない年が渡された場合にエラーをスローする",
+      (month) => {
+        test(`存在し得ない年が渡された場合にエラーをスローする。2022/${month}/1`, () => {
+          expect(() => {
+            new DateOnly(2022, month, 1);
+          }).toThrowError(Error);
+        });
+      }
+    );
+
     describe.each([
       [2021, 2, 29], // うるう年じゃない
       [2100, 2, 29], // うるう年じゃない

@@ -1,8 +1,19 @@
 {
+  // 自動保存
+  "files.autoSave": "afterDelay",
   // 保存時自動フォーマット
   "editor.formatOnSave": true,
+  // 保存時の自動処理
+  "editor.codeActionsOnSave": {
+    // インポートの整理
+    "source.organizeImports": true
+  },
   // デフォルトフォーマッタをprettierに
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // jestがいい感じで動くように
+  "jest.jestCommandLine": "npm run test --",
+  "jest.showCoverageOnLoad": true,
+  "jest.coverageFormatter": "GutterFormatter",
   "cSpell.words": [
     "endregion",
     "hoge"

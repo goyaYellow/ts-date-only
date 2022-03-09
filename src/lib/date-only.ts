@@ -79,7 +79,7 @@ export class DateOnly {
   }
 
   public getDayOfWeek(): dayOfTheWeek.DayOfTheWeek {
-    return dayOfTheWeek.convertFromDate(this.asDateWithFirstTime());
+    return dayOfTheWeek.fromDate(this.asDateWithFirstTime());
   }
 
   // #endregion

@@ -11,15 +11,15 @@ export enum DayOfTheWeek {
 const convertFromDay = (source: number): DayOfTheWeek => {
   switch (source) {
     case 0:
-      return DayOfTheWeek.Sun;
-    case 1:
       return DayOfTheWeek.Mon;
-    case 2:
+    case 1:
       return DayOfTheWeek.Tue;
-    case 3:
+    case 2:
       return DayOfTheWeek.Wed;
-    case 4:
+    case 3:
       return DayOfTheWeek.Thu;
+    case 4:
+      return DayOfTheWeek.Fri;
     case 5:
       return DayOfTheWeek.Sat;
     case 6:
@@ -31,6 +31,6 @@ const convertFromDay = (source: number): DayOfTheWeek => {
   }
 };
 
-export const convertFromDate = (source: Date): DayOfTheWeek => {
+export const fromDate = (source: Date): DayOfTheWeek => {
   return convertFromDay(source.getDay());
 };

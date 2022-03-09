@@ -94,16 +94,85 @@ describe("コンストラクタ", () => {
 
 describe("ファクトリ系", () => {
   describe("文字列を元にインスタンスを生成する関数のテスト", () => {
-    test("スラッシュ区切りの年月日形式の文字列を渡してセパレータを指定しなければ、文字列で示した年月日を示すインスタンスが🐸", () => {
+    describe("正常系", () => {
+      test("スラッシュ区切りの年月日形式の文字列を渡してセパレータを指定しなければ、文字列で示した年月日を示すインスタンスが🐸", () => {
+        // 準備
+        const source = "2022/01/02";
+        const expected = new DateOnly(2022, 1, 2);
+
+        // 実行
+        const actual = DateOnly.fromByStr(source);
+
+        // 検証
+        expect(actual.equals(expected)).toBe(true);
+      });
+
+      test("ハイフン区切りの年月日形式の文字列を渡してセパレータにハイフンを指定すると、文字列で示した年月日を示すインスタンスが🐸", () => {
+        // 準備
+        const source = "2022-01-02";
+        const expected = new DateOnly(2022, 1, 2);
+
+        // 実行
+        const actual = DateOnly.fromByStr(source, "-");
+
+        // 検証
+        expect(actual.equals(expected)).toBe(true);
+      });
+    });
+
+    describe("異常系", () => {
+      test("文節が４つの文字列を渡すと、エラーがスローされる", () => {
+        // 準備
+        const source = "2022/01/02/03";
+
+        // 実行
+        // 検証
+        expect(() => {
+          DateOnly.fromByStr(source);
+        }).toThrowError(Error);
+      });
+
+      test("文節が2つの文字列を渡すと、エラーがスローされる", () => {
+        // 準備
+        const source = "2022/01";
+
+        // 実行
+        // 検証
+        expect(() => {
+          DateOnly.fromByStr(source);
+        }).toThrowError(Error);
+      });
+
+      test("アルファベットが含まれる文字列を渡すと、エラーがスローされる", () => {
+        // 準備
+        const source = "TWENTY/ONE/ONE";
+
+        // 実行
+        // 検証
+        expect(() => {
+          DateOnly.fromByStr(source);
+        }).toThrowError(Error);
+      });
+    });
+  });
+});
+
+describe("Dateを元にインスタンスを生成する関数のテスト", () => {
+  describe("正常系", () => {
+    test("2022/1/2を示す日付を渡すと、2022/1/2を示した年月日を示すインスタンスが🐸", () => {
       // 準備
-      const source = "2022/01/02";
+      const source = new Date(2022, 1 - 1, 2);
       const expected = new DateOnly(2022, 1, 2);
 
       // 実行
-      const actual = DateOnly.fromByStr(source);
+      const actual = DateOnly.fromByDate(source);
 
       // 検証
       expect(actual.equals(expected)).toBe(true);
+    });
+
+    describe("異常系", () => {
+      // 特にないかな？
     });
   });
 });

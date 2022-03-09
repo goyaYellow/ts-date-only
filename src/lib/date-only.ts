@@ -63,7 +63,7 @@ export class DateOnly {
   // #region 値取得系
 
   public asDateWithFirstTime(): Date {
-    return new Date(this.year, this.month, this.day, 0, 0, 0, 0);
+    return new Date(this.year, this.month - 1, this.day, 0, 0, 0, 0);
   }
 
   public asDateWithLastTime(): Date {

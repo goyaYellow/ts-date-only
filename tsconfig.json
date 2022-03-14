@@ -11,8 +11,5 @@
     "pretty": true,
     "newLine": "lf",
     "outDir": "dist"
-  },
-  "exclude": [
-    "node_module"
-  ]
+  }
 }

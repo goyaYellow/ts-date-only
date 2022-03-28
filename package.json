@@ -1,6 +1,6 @@
 {
   "name": "@goya_yellow/date-only",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "date only objects for ts",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

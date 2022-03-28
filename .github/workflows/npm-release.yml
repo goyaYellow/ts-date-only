@@ -31,7 +31,7 @@ jobs:
       - name: setup dependencies
         run: npm ci
       - name: run test
-        run: npm test
+        run: npm run test
       - name: build
         run: npm run build
       - name: exe publish

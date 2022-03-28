@@ -37,7 +37,7 @@ jobs:
       - name: exe publish
         run: npm publish --access=public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       #-- Slack通知 -- [参照](https://blog.katsubemakito.net/git/github-actions-slack) #
       # 成功
       - name: notice for slack on SUCCESS

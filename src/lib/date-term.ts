@@ -13,4 +13,8 @@ export class DateTerm {
     this.start = start
     this.end = end
   }
+
+  public isInclude(checked: DateOnly): boolean {
+    return this.start.isLessThanOrEqual(checked) && this.end.isMoreThanOrEqual(checked)
+  }
 }

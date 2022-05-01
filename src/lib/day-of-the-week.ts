@@ -11,26 +11,24 @@ export enum DayOfTheWeek {
 const convertFromDay = (source: number): DayOfTheWeek => {
   switch (source) {
     case 0:
-      return DayOfTheWeek.Mon;
+      return DayOfTheWeek.Mon
     case 1:
-      return DayOfTheWeek.Tue;
+      return DayOfTheWeek.Tue
     case 2:
-      return DayOfTheWeek.Wed;
+      return DayOfTheWeek.Wed
     case 3:
-      return DayOfTheWeek.Thu;
+      return DayOfTheWeek.Thu
     case 4:
-      return DayOfTheWeek.Fri;
+      return DayOfTheWeek.Fri
     case 5:
-      return DayOfTheWeek.Sat;
+      return DayOfTheWeek.Sat
     case 6:
-      return DayOfTheWeek.Sun;
+      return DayOfTheWeek.Sun
     default:
-      throw new Error(
-        `sourceは0~1のいずれか出ないといけません. source:${source}`
-      );
+      throw new Error(`sourceは0~1のいずれか出ないといけません. source:${source}`)
   }
-};
+}
 
 export const fromDate = (source: Date): DayOfTheWeek => {
-  return convertFromDay(source.getDay());
-};
+  return convertFromDay(source.getDay())
+}

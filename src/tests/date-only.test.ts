@@ -199,6 +199,20 @@ describe("値取得系", () => {
       expect(actual === expected).toBe(true)
     })
   })
+
+  describe("値をわかりやすい文字列として返す関数のテスト", () => {
+    test("2022/1/2を示すインスタンスで関数を呼び出すと、「2022/1/2」という文字列が🐸", () => {
+      // 準備
+      const source = new DateOnly(2022, 1, 2)
+      const expected = "2022/1/2"
+
+      // 実行
+      const actual = source.toString()
+
+      // 検証
+      expect(actual === expected).toBe(true)
+    })
+  })
 })
 
 describe("加算系", () => {

@@ -63,6 +63,10 @@ export class DateOnly {
     return dayOfTheWeek.fromDate(this.asDateWithFirstTime())
   }
 
+  public toString(): string {
+    return `${this.year}/${this.month}/${this.day}`
+  }
+
   // #endregion
 
   // #region 加算系

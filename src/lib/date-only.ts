@@ -94,7 +94,7 @@ export class DateOnly {
     return this.year === other.year && this.month === other.month && this.day === other.day
   }
 
-  public isLessThan(other: DateOnly): boolean {
+  public isOlderThan(other: DateOnly): boolean {
     if (this.year > other.year) {
       return false
     } else if (this.year < other.year) {
@@ -116,16 +116,16 @@ export class DateOnly {
     return false
   }
 
-  public isMoreThan(other: DateOnly): boolean {
-    return !this.isLessThan(other) && !this.equals(other)
+  public isNewerThan(other: DateOnly): boolean {
+    return !this.isOlderThan(other) && !this.equals(other)
   }
 
-  public isLessThanOrEqual(other: DateOnly): boolean {
-    return this.isLessThan(other) || this.equals(other)
+  public isOlderThanOrEqual(other: DateOnly): boolean {
+    return this.isOlderThan(other) || this.equals(other)
   }
 
-  public isMoreThanOrEqual(other: DateOnly): boolean {
-    return this.isMoreThan(other) || this.equals(other)
+  public isNewerThanOrEqual(other: DateOnly): boolean {
+    return this.isNewerThan(other) || this.equals(other)
   }
 
   // #endregion

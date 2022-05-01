@@ -5,7 +5,7 @@ export class DateTerm {
   public readonly end: DateOnly
 
   public constructor(start: DateOnly, end: DateOnly) {
-    if (start.isMoreThan(end))
+    if (start.isNewerThan(end))
       throw new Error(
         `start <= end でないといけません。start=${start.toString()}。end=${end.toString()}。`,
       )
@@ -15,6 +15,6 @@ export class DateTerm {
   }
 
   public isInclude(checked: DateOnly): boolean {
-    return this.start.isLessThanOrEqual(checked) && this.end.isMoreThanOrEqual(checked)
+    return this.start.isOlderThanOrEqual(checked) && this.end.isNewerThanOrEqual(checked)
   }
 }

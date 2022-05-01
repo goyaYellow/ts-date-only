@@ -396,7 +396,7 @@ describe("比較系", () => {
       const expected = false
 
       // 実行
-      const actual = source.isLessThan(other)
+      const actual = source.isOlderThan(other)
 
       // 検証
       expect(actual).toBe(expected)
@@ -414,7 +414,7 @@ describe("比較系", () => {
         const expected = true
 
         // 実行
-        const actual = source.isLessThan(other)
+        const actual = source.isOlderThan(other)
 
         // 検証
         expect(actual).toBe(expected)
@@ -433,7 +433,7 @@ describe("比較系", () => {
         const expected = false
 
         // 実行
-        const actual = source.isLessThan(other)
+        const actual = source.isOlderThan(other)
 
         // 検証
         expect(actual).toBe(expected)
@@ -449,7 +449,7 @@ describe("比較系", () => {
       const expected = false
 
       // 実行
-      const actual = source.isMoreThan(other)
+      const actual = source.isNewerThan(other)
 
       // 検証
       expect(actual).toBe(expected)
@@ -467,7 +467,7 @@ describe("比較系", () => {
         const expected = true
 
         // 実行
-        const actual = source.isMoreThan(other)
+        const actual = source.isNewerThan(other)
 
         // 検証
         expect(actual).toBe(expected)
@@ -486,7 +486,7 @@ describe("比較系", () => {
         const expected = false
 
         // 実行
-        const actual = source.isMoreThan(other)
+        const actual = source.isNewerThan(other)
 
         // 検証
         expect(actual).toBe(expected)
@@ -502,7 +502,7 @@ describe("比較系", () => {
       const expected = true
 
       // 実行
-      const actual = source.isLessThanOrEqual(other)
+      const actual = source.isOlderThanOrEqual(other)
 
       // 検証
       expect(actual).toBe(expected)
@@ -520,7 +520,7 @@ describe("比較系", () => {
         const expected = true
 
         // 実行
-        const actual = source.isLessThanOrEqual(other)
+        const actual = source.isOlderThanOrEqual(other)
 
         // 検証
         expect(actual).toBe(expected)
@@ -539,7 +539,7 @@ describe("比較系", () => {
         const expected = false
 
         // 実行
-        const actual = source.isLessThanOrEqual(other)
+        const actual = source.isOlderThanOrEqual(other)
 
         // 検証
         expect(actual).toBe(expected)
@@ -555,7 +555,7 @@ describe("比較系", () => {
       const expected = true
 
       // 実行
-      const actual = source.isMoreThanOrEqual(other)
+      const actual = source.isNewerThanOrEqual(other)
 
       // 検証
       expect(actual).toBe(expected)
@@ -573,7 +573,7 @@ describe("比較系", () => {
         const expected = true
 
         // 実行
-        const actual = source.isMoreThanOrEqual(other)
+        const actual = source.isNewerThanOrEqual(other)
 
         // 検証
         expect(actual).toBe(expected)
@@ -592,7 +592,7 @@ describe("比較系", () => {
         const expected = false
 
         // 実行
-        const actual = source.isMoreThanOrEqual(other)
+        const actual = source.isNewerThanOrEqual(other)
 
         // 検証
         expect(actual).toBe(expected)

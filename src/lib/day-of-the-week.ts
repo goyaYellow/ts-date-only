@@ -11,19 +11,19 @@ export enum DayOfTheWeek {
 const convertFromDay = (source: number): DayOfTheWeek => {
   switch (source) {
     case 0:
-      return DayOfTheWeek.Mon
-    case 1:
-      return DayOfTheWeek.Tue
-    case 2:
-      return DayOfTheWeek.Wed
-    case 3:
-      return DayOfTheWeek.Thu
-    case 4:
-      return DayOfTheWeek.Fri
-    case 5:
-      return DayOfTheWeek.Sat
-    case 6:
       return DayOfTheWeek.Sun
+    case 1:
+      return DayOfTheWeek.Mon
+    case 2:
+      return DayOfTheWeek.Tue
+    case 3:
+      return DayOfTheWeek.Wed
+    case 4:
+      return DayOfTheWeek.Thu
+    case 5:
+      return DayOfTheWeek.Fri
+    case 6:
+      return DayOfTheWeek.Sat
     default:
       throw new Error(`sourceは0~1のいずれか出ないといけません. source:${source}`)
   }

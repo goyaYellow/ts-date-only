@@ -1,4 +1,5 @@
 import { DateOnly } from "../lib/date-only"
+import { DayOfTheWeek } from "../lib/day-of-the-week"
 
 describe("コンストラクタ", () => {
   describe("正常系", () => {
@@ -156,30 +157,51 @@ describe("ファクトリ系", () => {
   })
 })
 
-describe("値をその日の最初の時刻をもつDate型インスタンスとして返す関数のテスト", () => {
-  test("2022/1/2を示すインスタンで関数を呼び出すと、2022/1/2 00:00:00.00 を示すインスタンスが🐸", () => {
-    // 準備
-    const source = new DateOnly(2022, 1, 2)
-    const expected = new Date(2022, 1 - 1, 2, 0, 0, 0)
+describe("値取得系", () => {
+  describe("値をその日の最初の時刻をもつDate型インスタンスとして返す関数のテスト", () => {
+    test("2022/1/2を示すインスタンスで関数を呼び出すと、2022/1/2 00:00:00.00 を示すインスタンスが🐸", () => {
+      // 準備
+      const source = new DateOnly(2022, 1, 2)
+      const expected = new Date(2022, 1 - 1, 2, 0, 0, 0)
 
-    // 実行
-    const actual = source.asDateWithFirstTime()
+      // 実行
+      const actual = source.asDateWithFirstTime()
 
-    // 検証
-    expect(actual.getTime() === expected.getTime()).toBe(true)
+      // 検証
+      expect(actual.getTime() === expected.getTime()).toBe(true)
+    })
   })
-})
 
-describe("値をその日の最後の時刻をもつDate型インスタンスとして返す関数のテスト", () => {
-  test("2022/1/2を示すインスタンで関数を呼び出すと、2022/1/2 23:59:59.999 を示すインスタンスが🐸", () => {
-    // 準備
-    const source = new DateOnly(2022, 1, 2)
-    const expected = new Date(2022, 1 - 1, 2, 23, 59, 59, 999)
+  describe("値をその日の最後の時刻をもつDate型インスタンスとして返す関数のテスト", () => {
+    test("2022/1/2を示すインスタンスで関数を呼び出すと、2022/1/2 23:59:59.999 を示すインスタンスが🐸", () => {
+      // 準備
+      const source = new DateOnly(2022, 1, 2)
+      const expected = new Date(2022, 1 - 1, 2, 23, 59, 59, 999)
 
-    // 実行
-    const actual = source.asDateWithLastTime()
+      // 実行
+      const actual = source.asDateWithLastTime()
 
-    // 検証
-    expect(actual.getTime() === expected.getTime()).toBe(true)
+      // 検証
+      expect(actual.getTime() === expected.getTime()).toBe(true)
+    })
+  })
+
+  describe("該当する曜日を返す関数のテスト", () => {
+    test("2022/1/2を示すインスタンスで関数を呼び出すと、日曜日が🐸", () => {
+      // 準備
+      const source = new DateOnly(2022, 1, 2)
+      const expected = DayOfTheWeek.Sun
+
+      // 実行
+      const actual = source.getDayOfWeek()
+
+      console.log(JSON.stringify(source))
+      console.log(JSON.stringify(source.asDateWithFirstTime().getDay()))
+      console.log(source.asDateWithFirstTime().toDateString())
+      console.log(JSON.stringify(actual))
+
+      // 検証
+      expect(actual === expected).toBe(true)
+    })
   })
 })

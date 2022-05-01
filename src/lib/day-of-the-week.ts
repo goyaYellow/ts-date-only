@@ -25,7 +25,7 @@ const convertFromDay = (source: number): DayOfTheWeek => {
     case 6:
       return DayOfTheWeek.Sat
     default:
-      throw new Error(`sourceは0~1のいずれか出ないといけません. source:${source}`)
+      throw new Error(`sourceは0~1のいずれかでないといけません. source:${source}`)
   }
 }
 

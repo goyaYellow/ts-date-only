@@ -71,11 +71,15 @@ export class DateOnly {
   }
 
   public addMonth(month: number): DateOnly {
-    return new DateOnly(this.year, this.month + month, this.day)
+    const date = this.asDateWithFirstTime()
+    date.setMonth(this.month + month - 1)
+    return DateOnly.fromByDate(date)
   }
 
   public addDay(day: number): DateOnly {
-    return new DateOnly(this.year, this.month, this.day + day)
+    const date = this.asDateWithFirstTime()
+    date.setDate(this.day + day)
+    return DateOnly.fromByDate(date)
   }
 
   //#endregion

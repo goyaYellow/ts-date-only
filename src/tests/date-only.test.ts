@@ -195,13 +195,148 @@ describe("値取得系", () => {
       // 実行
       const actual = source.getDayOfWeek()
 
-      console.log(JSON.stringify(source))
-      console.log(JSON.stringify(source.asDateWithFirstTime().getDay()))
-      console.log(source.asDateWithFirstTime().toDateString())
+      // 検証
+      expect(actual === expected).toBe(true)
+    })
+  })
+})
+
+describe("値取得系", () => {
+  describe("年を加算する関数のテスト", () => {
+    test("2022/1/2を示すインスタンスに対し10を渡すと、2023/1/2が🐸", () => {
+      // 準備
+      const added = 10
+      const source = new DateOnly(2022, 1, 2)
+      const expected = new DateOnly(2032, 1, 2)
+
+      // 実行
+      const actual = source.addYear(added)
+
+      // 検証
+      expect(actual.equals(expected)).toBe(true)
+    })
+
+    test("2022/1/2を示すインスタンスに対し-10を渡すと、2012/1/2が🐸", () => {
+      // 準備
+      const added = -10
+      const source = new DateOnly(2022, 1, 2)
+      const expected = new DateOnly(2012, 1, 2)
+
+      // 実行
+      const actual = source.addYear(added)
+
+      // 検証
+      expect(actual.equals(expected)).toBe(true)
+    })
+  })
+
+  describe("月を加算する関数のテスト", () => {
+    test("2022/6/2を示すインスタンスに対し3を渡すと、2022/9/2が🐸", () => {
+      // 準備
+      const added = 3
+      const source = new DateOnly(2022, 6, 2)
+      const expected = new DateOnly(2022, 9, 2)
+
+      // 実行
+      const actual = source.addMonth(added)
+
+      // 検証
+      expect(actual.equals(expected)).toBe(true)
+    })
+
+    test("2022/6/2を示すインスタンスに対し10を渡すと、2023/4/2が🐸", () => {
+      // 準備
+      const added = 10
+      const source = new DateOnly(2022, 6, 2)
+      const expected = new DateOnly(2023, 4, 2)
+
+      // 実行
+      const actual = source.addMonth(added)
+
+      // 検証
+      expect(actual.equals(expected)).toBe(true)
+    })
+
+    test("2022/6/2を示すインスタンスに対し-3を渡すと、2022/3/2が🐸", () => {
+      // 準備
+      const added = -3
+      const source = new DateOnly(2022, 6, 2)
+      const expected = new DateOnly(2022, 3, 2)
+
+      // 実行
+      const actual = source.addMonth(added)
+
+      // 検証
+      expect(actual.equals(expected)).toBe(true)
+    })
+
+    test("2022/6/2を示すインスタンスに対し-10を渡すと、2021/8/2が🐸", () => {
+      // 準備
+      const added = -10
+      const source = new DateOnly(2022, 6, 2)
+      const expected = new DateOnly(2021, 8, 2)
+
+      // 実行
+      const actual = source.addMonth(added)
+
+      // 検証
+      expect(actual.equals(expected)).toBe(true)
+    })
+  })
+
+  describe("日を加算する関数のテスト", () => {
+    test("2022/6/15を示すインスタンスに対し8を渡すと、2022/6/23が🐸", () => {
+      // 準備
+      const added = 8
+      const source = new DateOnly(2022, 6, 15)
+      const expected = new DateOnly(2022, 6, 23)
+
+      // 実行
+      const actual = source.addDay(added)
+
+      // 検証
+      expect(actual.equals(expected)).toBe(true)
+    })
+
+    test("2022/6/15を示すインスタンスに対し20を渡すと、2023/7/5が🐸", () => {
+      // 準備
+      const added = 20
+      const source = new DateOnly(2022, 6, 15)
+      const expected = new DateOnly(2022, 7, 5)
+
+      // 実行
+      const actual = source.addDay(added)
+
+      // 検証
+      expect(actual.equals(expected)).toBe(true)
+    })
+
+    test("2022/6/15を示すインスタンスに対し-8を渡すと、2022/6/7が🐸", () => {
+      // 準備
+      const added = -8
+      const source = new DateOnly(2022, 6, 15)
+      const expected = new DateOnly(2022, 6, 7)
+
+      // 実行
+      const actual = source.addDay(added)
+
+      // 検証
+      expect(actual.equals(expected)).toBe(true)
+    })
+
+    test("2022/6/15を示すインスタンスに対し-20を渡すと、2021/5/26が🐸", () => {
+      // 準備
+      const added = -20
+      const source = new DateOnly(2022, 6, 15)
+      const expected = new DateOnly(2022, 5, 26)
+
+      // 実行
+      const actual = source.addDay(added)
+
       console.log(JSON.stringify(actual))
 
       // 検証
-      expect(actual === expected).toBe(true)
+      expect(actual.equals(expected)).toBe(true)
     })
   })
 })

@@ -201,7 +201,7 @@ describe("値取得系", () => {
   })
 })
 
-describe("値取得系", () => {
+describe("加算系", () => {
   describe("年を加算する関数のテスト", () => {
     test("2022/1/2を示すインスタンスに対し10を渡すと、2023/1/2が🐸", () => {
       // 準備
@@ -333,10 +333,44 @@ describe("値取得系", () => {
       // 実行
       const actual = source.addDay(added)
 
-      console.log(JSON.stringify(actual))
-
       // 検証
       expect(actual.equals(expected)).toBe(true)
+    })
+  })
+})
+
+describe("比較系", () => {
+  describe("インスタンスが示す日付が同じかを判定する関数のテスト", () => {
+    test("2022/6/15を示すインスタンスに2022/6/15を渡すと、Trueが🐸", () => {
+      // 準備
+      const source = new DateOnly(2022, 6, 15)
+      const other = new DateOnly(2022, 6, 15)
+      const expected = true
+
+      // 実行
+      const actual = source.equals(other)
+
+      // 検証
+      expect(actual).toBe(expected)
+    })
+
+    describe.each([
+      [2021, 6, 15],
+      [2022, 7, 15],
+      [2022, 6, 16],
+    ])("2022/6/15を示すインスタンスに異なる日付を渡すと、Falseが🐸", (year, month, day) => {
+      test(`2022/6/15を示すインスタンスに${year}/${month}/${day}を渡すと、Falseが🐸`, () => {
+        // 準備
+        const source = new DateOnly(2022, 6, 15)
+        const other = new DateOnly(year, month, day)
+        const expected = false
+
+        // 実行
+        const actual = source.equals(other)
+
+        // 検証
+        expect(actual).toBe(expected)
+      })
     })
   })
 })

@@ -113,7 +113,7 @@ export class DateOnly {
   }
 
   public isMoreThan(other: DateOnly): boolean {
-    return !this.isLessThan(other)
+    return !this.isLessThan(other) && !this.equals(other)
   }
 
   public isLessThanOrEqual(other: DateOnly): boolean {

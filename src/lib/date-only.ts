@@ -56,7 +56,7 @@ export class DateOnly {
   }
 
   public asDateWithLastTime(): Date {
-    return new Date(this.year, this.month, this.day, 23, 59, 59, 999999999999999999)
+    return new Date(this.year, this.month - 1, this.day, 23, 59, 59, 999)
   }
 
   public getDayOfWeek(): dayOfTheWeek.DayOfTheWeek {

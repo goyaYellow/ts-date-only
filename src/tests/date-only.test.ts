@@ -373,4 +373,57 @@ describe("比較系", () => {
       })
     })
   })
+
+  describe("渡されたインスタンスが示す日付より自分が過去かを判定する関数のテスト", () => {
+    test("2022/6/15を示すインスタンスに2022/6/15を渡すと、Falseが🐸", () => {
+      // 準備
+      const source = new DateOnly(2022, 6, 15)
+      const other = new DateOnly(2022, 6, 15)
+      const expected = false
+
+      // 実行
+      const actual = source.isLessThan(other)
+
+      // 検証
+      expect(actual).toBe(expected)
+    })
+
+    describe.each([
+      [2023, 6, 15],
+      [2022, 7, 15],
+      [2022, 6, 17],
+    ])("2022/6/15を示すインスタンスにそれより未来の日付を渡すと、Trueが🐸", (year, month, day) => {
+      test(`2022/6/15を示すインスタンスに${year}/${month}/${day}を渡すと、Trueが🐸`, () => {
+        // 準備
+        const source = new DateOnly(2022, 6, 15)
+        const other = new DateOnly(year, month, day)
+        const expected = true
+
+        // 実行
+        const actual = source.isLessThan(other)
+
+        // 検証
+        expect(actual).toBe(expected)
+      })
+    })
+
+    describe.each([
+      [2021, 6, 15],
+      [2022, 5, 15],
+      [2022, 6, 14],
+    ])("2022/6/15を示すインスタンスにそれより過去の日付を渡すと、Falseが🐸", (year, month, day) => {
+      test(`2022/6/15を示すインスタンスに${year}/${month}/${day}を渡すと、Trueが🐸`, () => {
+        // 準備
+        const source = new DateOnly(2022, 6, 15)
+        const other = new DateOnly(year, month, day)
+        const expected = false
+
+        // 実行
+        const actual = source.isLessThan(other)
+
+        // 検証
+        expect(actual).toBe(expected)
+      })
+    })
+  })
 })
